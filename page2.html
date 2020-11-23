@@ -16,6 +16,7 @@
   </head>
 
   <body>
+    <p id="id_0">0. （id_0）VYThクリックイベント発火。</p>
     <p id="id_1">1. （id_1）JS側にonclick書いてクリックイベント発火。</p>
     <p id="id_2">2. （id_2）JSでは無名関数も使えるよ！</p>
     <p onclick="pClick()">3. HTMLでonclick属性書いた。クリックしてみて！</p>
@@ -24,10 +25,23 @@
 
     <script type="text/javascript">
       // 変数定義（「//」から始まる行はコメントアウト）
+      var id_0 = document.getElementById("id_0");
       var id_1 = document.getElementById("id_1");
       var id_2 = document.getElementById("id_2");
       var id_3 = document.getElementById("id_3");
 
+      // Vyth test
+      id_0.onclick = function id0Click() {
+        webkit.messageHandlers.callbackHandler.postMessage("VYTH: Message from Javascript");
+      }
+      function vythTest(val) {
+        // テスト用に id タイトルを変更
+        var h1 = document.getElementById("title");
+        h1.textContent = val;
+      }
+      
+      
+      
       // id_1（id_2）をクリックしたら、functionの中身を実行
       id_1.onclick = function id1Click() {
         alert("id_1クリックしたよ！");
